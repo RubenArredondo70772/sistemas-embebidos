@@ -1,0 +1,155 @@
+{
+  "version": 1,
+  "author": "Sistemas Embebidos",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-pir-motion-sensor",
+      "id": "pir",
+      "top": 220,
+      "left": -200,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-servo",
+      "id": "servo_boca",
+      "top": -40,
+      "left": 230,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_ojo1",
+      "top": -90,
+      "left": -140,
+      "attrs": {
+        "color": "red",
+        "label": "OJO 1"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": -30,
+      "left": -120,
+      "rotate": 90,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_ojo2",
+      "top": -90,
+      "left": -90,
+      "attrs": {
+        "color": "red",
+        "label": "OJO 2"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": -30,
+      "left": -70,
+      "rotate": 90,
+      "attrs": {
+        "value": "220"
+      }
+    }
+  ],
+  "connections": [
+    [
+      "esp:TX",
+      "$serialMonitor:RX",
+      "",
+      []
+    ],
+    [
+      "esp:RX",
+      "$serialMonitor:TX",
+      "",
+      []
+    ],
+    [
+      "pir:OUT",
+      "esp:27",
+      "green",
+      []
+    ],
+    [
+      "pir:VCC",
+      "esp:5V",
+      "red",
+      []
+    ],
+    [
+      "pir:GND",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "servo_boca:PWM",
+      "esp:18",
+      "orange",
+      []
+    ],
+    [
+      "servo_boca:V+",
+      "esp:5V",
+      "red",
+      []
+    ],
+    [
+      "servo_boca:GND",
+      "esp:GND.2",
+      "black",
+      []
+    ],
+    [
+      "esp:25",
+      "r1:2",
+      "blue",
+      []
+    ],
+    [
+      "r1:1",
+      "led_ojo1:A",
+      "blue",
+      []
+    ],
+    [
+      "led_ojo1:C",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "esp:26",
+      "r2:2",
+      "blue",
+      []
+    ],
+    [
+      "r2:1",
+      "led_ojo2:A",
+      "blue",
+      []
+    ],
+    [
+      "led_ojo2:C",
+      "esp:GND.1",
+      "black",
+      []
+    ]
+  ],
+  "dependencies": {}
+}
