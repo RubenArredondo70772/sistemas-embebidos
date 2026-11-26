@@ -1,0 +1,155 @@
+{
+  "version": 1,
+  "author": "Sistemas Embebidos",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-ds18b20",
+      "id": "ds18b20",
+      "top": -110,
+      "left": -130,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-servo",
+      "id": "servo_dimmer",
+      "top": -120,
+      "left": 230,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r_peltier",
+      "top": 120,
+      "left": -200,
+      "rotate": 0,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_peltier",
+      "top": 80,
+      "left": -110,
+      "attrs": {
+        "color": "blue",
+        "label": "Peltier"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r_extractor",
+      "top": 180,
+      "left": -200,
+      "rotate": 0,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_extractor",
+      "top": 140,
+      "left": -110,
+      "attrs": {
+        "color": "green",
+        "label": "Extractor"
+      }
+    }
+  ],
+  "connections": [
+    [
+      "esp:TX",
+      "$serialMonitor:RX",
+      "",
+      []
+    ],
+    [
+      "esp:RX",
+      "$serialMonitor:TX",
+      "",
+      []
+    ],
+    [
+      "ds18b20:DQ",
+      "esp:4",
+      "green",
+      []
+    ],
+    [
+      "ds18b20:VCC",
+      "esp:3V3",
+      "red",
+      []
+    ],
+    [
+      "ds18b20:GND",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "servo_dimmer:PWM",
+      "esp:18",
+      "orange",
+      []
+    ],
+    [
+      "servo_dimmer:V+",
+      "esp:5V",
+      "red",
+      []
+    ],
+    [
+      "servo_dimmer:GND",
+      "esp:GND.2",
+      "black",
+      []
+    ],
+    [
+      "esp:3V3",
+      "r_peltier:1",
+      "red",
+      []
+    ],
+    [
+      "r_peltier:2",
+      "led_peltier:A",
+      "blue",
+      []
+    ],
+    [
+      "led_peltier:C",
+      "esp:19",
+      "blue",
+      []
+    ],
+    [
+      "esp:3V3",
+      "r_extractor:1",
+      "red",
+      []
+    ],
+    [
+      "r_extractor:2",
+      "led_extractor:A",
+      "green",
+      []
+    ],
+    [
+      "led_extractor:C",
+      "esp:23",
+      "green",
+      []
+    ]
+  ],
+  "dependencies": {}
+}
